@@ -5,19 +5,31 @@ const menuMb=document.querySelector('.mobile-menu')
 const icoMenu=document.querySelector('.menu');
 
 const cart=document.querySelector('.shopping-cart');
-const detail=document.querySelector('.product-detail');
+const shoppingCartContainer=document.querySelector('#ShoppingCartContainer');
 
-const cardContainer=document.querySelector('.cards-container')
+const cardContainer=document.querySelector('.cards-container');
+
+const productDetail=document.querySelector('#productDetail');
+const productDetailClose=document.querySelector('.product-detail-close')
+
 
 navEmail.addEventListener('click',()=>{
     menuDp.classList.toggle('inactive');
 })
 icoMenu.addEventListener('click',()=>{
-    const isAsideClosed =   detail.classList.contains('inactive')
+    const isAsideClosed =   shoppingCartContainer.classList.contains('inactive')
    
     if(!isAsideClosed){
-        detail.classList.add('inactive');
+        shoppingCartContainer.classList.add('inactive');
     }
+
+    const isDetailclosed = productDetail.classList.contains('inactive');
+   
+
+    if(!isDetailclosed){
+        productDetail.classList.add('inactive');
+    }
+
     menuMb.classList.toggle('inactive');
 })
 cart.addEventListener('click',()=>{
@@ -27,13 +39,25 @@ cart.addEventListener('click',()=>{
         if(!isMobileMenuClosed){
             menuMb.classList.add('inactive');
         }
+    const isDetailclosed = productDetail.classList.contains('inactive');
+   
+
+        if(!isDetailclosed){
+            productDetail.classList.add('inactive');
+        }
     
-        detail.classList.toggle('inactive');
+        shoppingCartContainer.classList.toggle('inactive');
     
 })
 
+productDetailClose.addEventListener('click',()=>{
+
+    productDetail.classList.add('inactive')
+})
 
 const productList = [];
+
+
 productList.push({
 name:'bike',
 price:212,
@@ -89,6 +113,16 @@ for(product of productList){
 
     const productInfo=document.createElement('div')
     productInfo.classList.add('product-info');
+
+    //-----click a algun productoi-------
+    img.addEventListener('click',()=>{
+        productDetail.classList.toggle('inactive');
+        const isAsideClosed =   shoppingCartContainer.classList.contains('inactive')
+   
+        if(!isAsideClosed){
+            shoppingCartContainer.classList.add('inactive');
+        }
+    })
 //-->
     const productInfoDiv=document.createElement('div');
 
